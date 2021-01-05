@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  Route as ReactDOMRoute,
   RouteProps as ReactDOMRouteProps,
+  Route as ReactDOMRoute,
   Redirect,
 } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ const Route: React.FC<RouteProps> = ({
         ) : (
           <Redirect
             to={{
-              pathname: isPrivate ? '/' : 'dashboard',
+              pathname: isPrivate ? '/' : '/dashboard',
               state: { from: location },
             }}
           />

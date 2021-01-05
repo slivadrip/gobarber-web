@@ -1,21 +1,19 @@
-import React, { ChangeEvent, useCallback, useRef, useState } from 'react';
-import { FiMail, FiUser, FiLock, FiArrowLeft, FiCamera } from 'react-icons/fi';
-import { FormHandles } from '@unform/core';
+import React, { useCallback, useRef, ChangeEvent } from 'react';
 
+import { FiArrowLeft, FiMail, FiLock, FiUser, FiCamera } from 'react-icons/fi';
 import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
-
-import getValidationErrors from '../../utils/getValidationErrors';
-
-import { Container, Header, Content, AvatarInput } from './styles';
-import logoImg from '../../assets/logo.svg';
-import api from '../../services/api';
-
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useToast } from '../../hooks/toast';
 import { useAuth } from '../../hooks/auth';
+
+import getValidationErrors from '../../utils/getValidationErros';
+import api from '../../services/api';
+
+import { Container, Header, Content, AvatarInput } from './styles';
 
 interface ProfileFormData {
   name: string;
@@ -149,9 +147,14 @@ const Profile: React.FC = () => {
         </div>
       </Header>
       <Content>
-        <img src={logoImg} alt="goBarber" />
-
-        <Form ref={formRef} onSubmit={handleSubmit}>
+        <Form
+          initialData={{
+            name: user.name,
+            email: user.email,
+          }}
+          ref={formRef}
+          onSubmit={handleSubmit}
+        >
           <AvatarInput>
             <img src={user.avatar_url} alt={user.name} />
             <label htmlFor="avatar">
@@ -183,13 +186,8 @@ const Profile: React.FC = () => {
           />
           <Button type="submit">Confirmar mudanças</Button>
         </Form>
-        <Link to="/">
-          <FiArrowLeft />
-          Voltar para logon
-        </Link>
       </Content>
     </Container>
   );
 };
-
 export default Profile;

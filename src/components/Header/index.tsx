@@ -16,10 +16,7 @@ const Header: React.FC = () => {
         <img src={logoImg} alt="logo" />
 
         <Profile>
-          <img
-            src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder.jpg"
-            alt={user.id}
-          />
+          <img src={user.avatar_url} alt={user.id} />
           <Info>
             <span>Bem-vindo(a), </span>
             <Link to="/profile">

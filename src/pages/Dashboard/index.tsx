@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect, useMemo } from 'react';
 
 import { isToday, isAfter, format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-
 import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import { FiClock } from 'react-icons/fi';
@@ -19,8 +18,8 @@ import {
   Calendar,
 } from './styles';
 
-import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
+import api from '../../services/api';
 
 interface MonthAvailabilityItem {
   day: number;
@@ -36,6 +35,7 @@ interface ScheduleAppointment {
     avatar_url: string;
   };
 }
+
 const Dashboard: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
@@ -135,6 +135,7 @@ const Dashboard: React.FC = () => {
       isAfter(parseISO(appointment.date), new Date()),
     );
   }, [appointments]);
+
   return (
     <Container>
       <Header />
